@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+	<head>
+		<title>QrBike@GDUFS</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<link href="/stylesheets/style.css" rel="stylesheet">
+		<script type="text/javascript" src="/javascripts/qrcode.js"></script>
+		<script type="text/javascript" src="/javascripts/jquery-2.0.3.min.js"></script>
+	</head>
+	<body>
+
+		<form action="/api/upload" method="POST" enctype="multipart/form-data">
+			<input class="info" name="name" id="name" type="text" placeholder="姓名" /><br />
+			<input class="info" name="username" id="username" type="text" placeholder="学号" /><br />
+			<input class="info" name="phone" id="phone" type="tel" placeholder="电话" /><br />
+			<input class="info" name="address" id="address" type="text" placeholder="宿舍" /><br />
+			<input class="info" name="color" id="color" type="text" placeholder="单车配色" /><br />
+			<input class="info" name="zone" id="zone" type="text" placeholder="停放区域" /><br />
+			<input type="file" name="file" /><br>
+			<input type="submit" class="btn" value="上传信息">
+		</form>
+
+		<button id="make" type="submit">取二维码</button><br />
+		<div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+		<script type="text/javascript">
+			// 定义二维码变量
+/*			var qrcode = new QRCode(document.getElementById("qrcode"), {
+				width : 300,
+				height : 300
+			});*/
+			var qrcode = new QRCode("qrcode");
+			// 定义连接文本的函数，逗号相隔，最后生成二维码
+			function jointText () {
+				// var iterator = document.getElementsByTagName("input");
+				var iterator = document.querySelectorAll("input.info");
+				var text="";
+				for(var i=0;i<iterator.length;i++){
+					text+=iterator[i].value+",";
+				}
+				text=text.substr(0,text.length-1);
+				qrcode.makeCode(text);//二维码变量的文本内容为上面连接后的信息
+			}
+			// 点击“生成二维码”按钮，执行jointText函数
+			$("#make").click(function(){jointText();});
+		</script>
+	</body>
+</html>

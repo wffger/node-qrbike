@@ -1,0 +1,19 @@
+{
+  "name": "node-qrbiek",
+  "version": "0.0.1",
+  "main": "app.js",
+
+  "dependencies": 
+  {
+    "express" : "~4.0.0",
+    "connect-multiparty" : "~1.2.4",
+    "hogan-express":"~0.5.2",
+    "request":"~2.40.0",
+    "mongoose" : "~3.8.8",
+    "csprng" : "~0.1.1",
+    "connect": "~2.14.4",
+    "nodemailer":"~0.6.3",
+    "crypto":"~0.0.3",
+    "gravatar":"~1.0.6"
+  }
+}
