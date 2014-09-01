@@ -58,10 +58,16 @@ module.exports = function(app) {
   // Web端上传单车信息
     app.post('/api/upload', multipartMiddleware, function (req, res){
       var bikeInfo = req.body;
-      upload.upload(bikeInfo, function (found){
+      var image = req.files.file;
+      if(image.size/1024/1024>2) {
+        res.send("上传的图片不能大于2M");
+      }else {
+        upload.upload(bikeInfo, image, function (found){
         console.log(found);
         res.json(found);
       });
+      }
+
       // console.log(req.body);
       // res.send(req.body);
   });
