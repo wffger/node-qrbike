@@ -1,6 +1,6 @@
 {
-  "name": "node-qrbiek",
-  "version": "0.0.1",
+  "name": "node-qrbike",
+  "version": "0.5",
   "main": "app.js",
 
   "dependencies": 

@@ -33,32 +33,32 @@ module.exports = function(app) {
     var id = req.body.id;
     var opass = req.body.oldpass;
     var npass = req.body.newpass;
-    chgpass.cpass(id,opass,npass,function(found){
+    chgpass.cpass(id,opass,npass,function (found){
       console.log(found);
       res.json(found);
   });
   });
-  app.post('/api/resetpass', function(req, res) {
+  app.post('/api/resetpass', function (req, res) {
     var email = req.body.email;
-    chgpass.respass_init(email,function(found){
+    chgpass.respass_init(email,function (found){
       console.log(found);
       res.json(found);
   });
   });
-  app.post('/api/resetpass/chg', function(req, res) {
+  app.post('/api/resetpass/chg', function (req, res) {
     var email = req.body.email;
     var code = req.body.code;
     var npass = req.body.newpass;
-    chgpass.respass_chg(email,code,npass,function(found){
+    chgpass.respass_chg(email,code,npass,function (found){
       console.log(found);
       res.json(found);
   });
   });
 
   // Web端上传单车信息
-    app.post('/api/upload', multipartMiddleware, function(req, res){
+    app.post('/api/upload', multipartMiddleware, function (req, res){
       var bikeInfo = req.body;
-      upload.upload(bikeInfo, function(){
+      upload.upload(bikeInfo, function (found){
         console.log(found);
         res.json(found);
       });
